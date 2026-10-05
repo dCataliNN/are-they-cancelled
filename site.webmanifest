@@ -1,0 +1,9 @@
+{
+  "name": "Are They Cancelled?",
+  "short_name": "Cancelled?",
+  "icons": [{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }],
+  "theme_color": "#0a0b0b",
+  "background_color": "#0a0b0b",
+  "display": "standalone",
+  "start_url": "/"
+}
