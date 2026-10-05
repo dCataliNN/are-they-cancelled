@@ -26,7 +26,7 @@ window.CASE_FILES = [
   {
     name: "Harvey Weinstein", aliases: ["weinstein"], known: "Film producer",
     alive: true, verdict: "cancelled",
-    record: "Accused by dozens of women starting in 2017. Convicted of rape in Los Angeles (2022). His 2020 New York conviction was overturned in 2024; at the 2025 retrial he was convicted on one count and acquitted on another.",
+    record: "Accused by dozens of women starting in 2017. Convicted of rape in Los Angeles (2022). His 2020 New York conviction was overturned in 2024; at the 2025 retrial he was convicted on one count and acquitted on another. The last remaining New York rape charge was dropped in 2026 after juries deadlocked twice.",
     wiki: "Harvey_Weinstein"
   },
   {
@@ -38,7 +38,7 @@ window.CASE_FILES = [
   {
     name: "Kanye West", aliases: ["ye", "kanye", "west"], known: "Rapper, designer",
     alive: true, verdict: "cancelled",
-    record: "Made repeated antisemitic statements beginning in 2022, including praising Hitler. Adidas, Balenciaga, Gap and his talent agency cut ties. He has alternated between apologizing and repeating the statements.",
+    record: "Made repeated antisemitic statements beginning in 2022, including praising Hitler. Adidas, Balenciaga, Gap and his talent agency cut ties. He has alternated between apologizing and repeating the statements. After he took out a full-page apology in January 2026, the UK still barred him from entering the country, and the Wireless festival he was headlining was cancelled.",
     wiki: "Kanye_West"
   },
 
@@ -64,13 +64,13 @@ window.CASE_FILES = [
   {
     name: "Chris Brown", aliases: ["breezy"], known: "Singer",
     alive: true, verdict: "thin-ice",
-    record: "Pleaded guilty in 2009 to felony assault of Rihanna. Has faced other assault allegations since, including a UK charge over a 2023 nightclub incident, to which he pleaded not guilty. His albums and tours still sell very well.",
+    record: "Pleaded guilty in 2009 to felony assault of Rihanna. Has faced other assault allegations since, including UK charges over a 2023 London nightclub bottle attack. He pleaded not guilty, and the trial was set to start on October 26, 2026. His albums and tours still sell very well.",
     wiki: "Chris_Brown"
   },
   {
     name: "Sean Combs", aliases: ["diddy", "puff daddy", "p diddy", "puffy", "combs"], known: "Rapper, mogul",
     alive: true, verdict: "thin-ice",
-    record: "Arrested in 2024 on federal sex-trafficking and racketeering charges. In 2025 a jury acquitted him of those charges and convicted him on two prostitution-related transportation counts. He was sentenced to 50 months. He still faces many civil lawsuits, which he denies.",
+    record: "Arrested in 2024 on federal sex-trafficking and racketeering charges. In 2025 a jury acquitted him of those charges and convicted him on two prostitution-related transportation counts. He was sentenced to 50 months and is appealing. His release date is February 2028. He still faces many civil lawsuits, which he denies.",
     wiki: "Sean_Combs"
   },
   {
@@ -82,7 +82,7 @@ window.CASE_FILES = [
   {
     name: "Neil Gaiman", aliases: ["gaiman"], known: "Author",
     alive: true, verdict: "thin-ice",
-    record: "Accused of sexual assault and coercion by several women in 2024 and 2025. He denies all non-consensual conduct. Some publishers and productions have paused or dropped projects with him.",
+    record: "Accused of sexual assault and coercion by several women in 2024 and 2025. He denies all non-consensual conduct. In 2026, US judges dismissed his former nanny's lawsuits on the grounds that they belong in New Zealand courts, without ruling on the claims themselves. Some publishers and productions have paused or dropped projects with him.",
     wiki: "Neil_Gaiman"
   },
   {
@@ -138,7 +138,7 @@ window.CASE_FILES = [
   {
     name: "Kevin Spacey", aliases: ["spacey"], known: "Actor",
     alive: true, verdict: "complicated",
-    record: "Accused of sexual misconduct by numerous men beginning in 2017. A US civil jury found him not liable in 2022, and a UK criminal jury acquitted him on all counts in 2023. He has largely been out of mainstream work since.",
+    record: "Accused of sexual misconduct by numerous men beginning in 2017. A US civil jury found him not liable in 2022, and a UK criminal jury acquitted him on all counts in 2023. In 2026 he settled UK civil suits from three men, without admitting liability. He has largely been out of mainstream work since.",
     wiki: "Kevin_Spacey"
   },
   {
@@ -162,7 +162,7 @@ window.CASE_FILES = [
   {
     name: "Gina Carano", aliases: ["carano"], known: "Actor, MMA fighter",
     alive: true, verdict: "complicated",
-    record: "Lucasfilm dropped her from The Mandalorian in 2021 over social media posts, including one comparing being a Republican to being Jewish in Nazi Germany. She sued Disney, and the case settled in 2024.",
+    record: "Lucasfilm dropped her from The Mandalorian in 2021 over social media posts, including one comparing being a Republican to being Jewish in Nazi Germany. She sued Disney, and the case settled in 2025.",
     wiki: "Gina_Carano"
   },
   {
@@ -216,7 +216,7 @@ window.CASE_FILES = [
   add("Tekashi 6ix9ine", "Rapper", "cancelled", "Pleaded guilty in 2015 to use of a child in a sexual performance. In 2019 pleaded guilty to racketeering charges and testified against former gang associates.", { aka: ["6ix9ine", "tekashi69", "daniel hernandez"] });
   add("Tory Lanez", "Rapper, singer", "cancelled", "Convicted in 2022 of shooting Megan Thee Stallion in the feet and sentenced to 10 years in prison.");
   add("Jonathan Majors", "Actor", "cancelled", "Convicted in 2023 of assault and harassment of his former girlfriend. Marvel dropped him right away.");
-  add("Gérard Depardieu", "Actor", "cancelled", "Accused of sexual misconduct by many women. Convicted in Paris in 2025 of sexually assaulting two women on a film set and given a suspended sentence. He is appealing and has been ordered to stand trial in a separate rape case.");
+  add("Gérard Depardieu", "Actor", "cancelled", "Accused of sexual misconduct by many women. Convicted in Paris in 2025 of sexually assaulting two women on a film set and given a suspended sentence. He is appealing that conviction, and has also appealed an order sending him to trial for rape in a separate case.");
   add("James Levine", "Conductor", "cancelled", "Fired by the Metropolitan Opera in 2018 after an investigation found evidence of sexual abuse and harassment. Died in 2021.", D);
   add("O.J. Simpson", "Football player, actor", "cancelled", "Acquitted in 1995 of murdering Nicole Brown Simpson and Ron Goldman, but a civil jury found him liable in 1997. Convicted of armed robbery in 2008. Died in 2024.", { dead: true, aka: ["oj simpson", "oj"] });
   add("Lance Armstrong", "Cyclist", "cancelled", "Stripped of his seven Tour de France titles in 2012 and banned for life. Admitted to doping in 2013.");
@@ -227,14 +227,14 @@ window.CASE_FILES = [
   add("Charlie Rose", "TV host", "cancelled", "Fired by CBS and PBS in 2017 after several women accused him of sexual harassment.");
   add("Eric Gill", "Sculptor, typeface designer", "cancelled", "His own diaries, published after his death, show he sexually abused his daughters. His sculptures still stand on the BBC's Broadcasting House.", D);
   add("Marion Zimmer Bradley", "Fantasy author", "cancelled", "In 2014 her daughter said Bradley sexually abused her as a child. Bradley had also covered for her husband, a convicted child molester. Died in 1999.", D);
-  add("Andrew Mountbatten Windsor", "Former British prince", "cancelled", "Virginia Giuffre accused him of sexually abusing her when she was 17, after she was trafficked by Jeffrey Epstein. He denied it but settled her lawsuit in 2022. Stripped of his royal titles in 2025.", { aka: ["prince andrew", "duke of york"] });
+  add("Andrew Mountbatten Windsor", "Former British prince", "cancelled", "Virginia Giuffre accused him of sexually abusing her when she was 17, after she was trafficked by Jeffrey Epstein. He denied it but settled her lawsuit in 2022. King Charles stripped him of the title of Prince and the title of Duke of York in 2025.", { aka: ["prince andrew", "duke of york"] });
 
   // ---- On thin ice ----
   add("Ezra Miller", "Actor", "thin-ice", "Arrested twice in Hawaii in 2022, and pleaded guilty in Vermont in 2023 to unlawful trespass after a burglary charge was dropped. Miller apologized and sought mental-health treatment.");
   add("Shia LaBeouf", "Actor", "thin-ice", "FKA twigs sued him in 2020 for sexual battery and abuse, and the case settled in 2025. He has publicly acknowledged a history of abusive behavior. Has several earlier arrests.");
-  add("Russell Brand", "Comedian, presenter", "thin-ice", "Accused by several women in a 2023 media investigation. Charged in the UK in 2025 with rape and sexual assault. He pleaded not guilty, and his trial was scheduled for June 2026, so check the news for the outcome.");
-  add("Andrew Tate", "Influencer, ex-kickboxer", "thin-ice", "Charged in Romania with human trafficking and rape. UK prosecutors have also authorized charges against him, including rape. He denies all of them.");
-  add("Jared Leto", "Actor, musician", "thin-ice", "In 2025, several women accused him of sexual misconduct, some of whom were minors at the time. His representatives deny the allegations.");
+  add("Russell Brand", "Comedian, presenter", "thin-ice", "Accused by several women in a 2023 media investigation. Charged in the UK in 2025 with rape and sexual assault. He pleaded not guilty. His trial was pushed back to October 2026, so check the news for the outcome.");
+  add("Andrew Tate", "Influencer, ex-kickboxer", "thin-ice", "UK prosecutors have charged him with rape and human trafficking, and in 2026 he was jailed in Miami while fighting extradition to the UK. Romania indicted him in 2026 on charges including trafficking minors. He denies all of the charges.");
+  add("Jared Leto", "Actor, musician", "thin-ice", "In 2025, nine women told Air Mail he behaved sexually inappropriately toward them, and some were minors at the time. His representatives deny all of the allegations.");
   add("Bryan Singer", "Film director", "thin-ice", "Accused by several men of sexually abusing them as teenagers. He denies it, but settled one lawsuit in 2019. He was fired during production of Bohemian Rhapsody.");
   add("Brett Ratner", "Film director", "thin-ice", "Accused of sexual misconduct by several women in 2017. He denies it. Returned to directing in 2025.");
   add("Joss Whedon", "Writer, director", "thin-ice", "Several actors, including Ray Fisher and Charisma Carpenter, accused him of abusive behavior on set. He disputes most of their accounts.");
@@ -260,7 +260,7 @@ window.CASE_FILES = [
   add("DaBaby", "Rapper", "thin-ice", "Made homophobic remarks and spread misinformation about HIV on stage in 2021. Several festivals dropped him.");
   add("Young Thug", "Rapper", "thin-ice", "Pleaded guilty in 2024 to gang, drug and gun charges in Georgia's YSL case. Sentenced to time served plus 15 years' probation.");
   add("Morgan Wallen", "Country singer", "thin-ice", "Caught on video using a racial slur in 2021. Pleaded guilty in 2024 to reckless endangerment after throwing a chair off a Nashville bar roof. Still one of the biggest artists in the world.");
-  add("Smokey Robinson", "Singer, songwriter", "thin-ice", "Former housekeepers sued him in 2025, alleging sexual assault. He denies it.");
+  add("Smokey Robinson", "Singer, songwriter", "thin-ice", "Former housekeepers sued him in 2025, alleging sexual assault. He denies it. His $500 million defamation countersuit was thrown out, and in 2026 a judge let parts of their case go forward.");
   add("Ryan Adams", "Singer, songwriter", "thin-ice", "Several women accused him of emotional abuse and manipulation in 2019. He later apologized.");
   add("Win Butler", "Singer (Arcade Fire)", "thin-ice", "Accused of sexual misconduct by several people in 2022. He says the relationships were consensual.");
   add("XXXTentacion", "Rapper", "thin-ice", "Charged with violently abusing his pregnant girlfriend, but was shot and killed in 2018 before his trial.", { dead: true, aka: ["x", "jahseh onfroy"] });
@@ -284,13 +284,13 @@ window.CASE_FILES = [
   // ---- It's complicated ----
   add("Amber Heard", "Actor", "complicated", "A UK court found her abuse allegations against Johnny Depp 'substantially true', and a US jury found she had defamed him. Two courts reached opposite outcomes.");
   add("Brad Pitt", "Actor", "complicated", "Angelina Jolie accused him of abusing her and their children on a 2016 flight. The FBI declined to bring charges, and he denies her allegations.");
-  add("Justin Baldoni", "Actor, director", "complicated", "Blake Lively sued him in 2024, alleging sexual harassment and a smear campaign. He denies it. His $400 million countersuit was dismissed in 2025.");
+  add("Justin Baldoni", "Actor, director", "complicated", "Blake Lively sued him in 2024, alleging sexual harassment and a smear campaign, which he denied. His $400 million countersuit was dismissed in 2025. In 2026 a judge threw out her harassment claims, and the rest of the case settled before trial.");
   add("Jay-Z", "Rapper, mogul", "complicated", "Named in a 2024 lawsuit alleging that he and Sean Combs raped a 13-year-old in 2000. He denies it, and the plaintiff dropped the case in 2025.", { aka: ["jay z", "shawn carter", "hov"] });
   add("Travis Scott", "Rapper", "complicated", "Ten people died in a crowd crush at his Astroworld festival in 2021. A grand jury declined to indict him in 2023.");
   add("A$AP Rocky", "Rapper", "complicated", "Acquitted in 2025 of assault with a firearm.", { aka: ["asap rocky", "rocky"] });
   add("Lizzo", "Singer", "complicated", "Former dancers sued her in 2023, alleging sexual harassment and a hostile workplace. She denies it.");
   add("Jason Aldean", "Country singer", "complicated", "The 2023 video for 'Try That in a Small Town' was criticized as racist and was pulled from CMT. He rejects that reading.");
-  add("Garth Brooks", "Country singer", "complicated", "A former hairstylist sued him in 2024, alleging sexual assault. He denies it and filed his own suit.");
+  add("Garth Brooks", "Country singer", "complicated", "A former hairstylist sued him in 2024, alleging sexual assault. He denies it and filed his own suit. The case was still stuck in the courts in 2026.");
   add("John Lennon", "Musician (The Beatles)", "complicated", "Admitted in a 1980 interview that he had hit women. Died in 1980.", { dead: true, aka: ["lennon"] });
   add("Elvis Presley", "Singer", "complicated", "Began dating Priscilla when she was 14 and he was 24. Died in 1977.", { dead: true, aka: ["elvis"] });
   add("Jimmy Page", "Guitarist (Led Zeppelin)", "complicated", "Lori Mattix says she had a relationship with him in the 1970s that began when she was 14. He has never commented.");

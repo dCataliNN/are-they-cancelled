@@ -7,5 +7,7 @@ Static site: no build step. Open `index.html` or serve the folder.
 - `data.js`: the case files. Add a person with `add(name, known, verdict, record)`.
 - `styles.css`: theme tokens use shadcn/tweakcn names, so you can paste a tweakcn export to re-skin.
 - `node set-domain.mjs https://your-domain.com`: sets the canonical/OG/sitemap URLs.
+- `node make-sitemap.mjs`: regenerates sitemap.xml with a URL per person (run after editing data.js).
+- Each person has a clean URL (`/woody-allen`); `vercel.json` rewrites those to `index.html`.
 
 Deployed on Vercel; pushes to `main` deploy automatically.

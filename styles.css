@@ -215,3 +215,12 @@ footer p { margin: 0; }
 @media (pointer: coarse) {
   .try button, .legal a, .card-foot a, .notice a { display: inline-block; padding: 10px 2px; }
 }
+
+/* Share + did-you-mean */
+.foot-links { display: inline-flex; gap: 16px; align-items: center; }
+.share { font: 500 .9rem var(--font-sans); color: var(--foreground); background: none; border: 1px solid var(--border);
+  border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.share:hover { border-color: var(--c); color: var(--c); }
+.guess { font-weight: 500; }
+.guess button { font: inherit; color: var(--primary); background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px; }

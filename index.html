@@ -93,7 +93,7 @@
       <h4>The dilemma</h4>
       <p>Dederer's point is that there's no algorithm for this. Deciding whether you can still love the art is your call. This site only gives you the facts.</p>
     </div>
-    <div class="legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><span>© 2026 Are They Cancelled?</span></div>
+    <div class="legal"><span>Facts last checked October 2026</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><span>© 2026 Are They Cancelled?</span></div>
   </footer>
 </main>
 
@@ -117,7 +117,7 @@ const VERDICTS = {
 };
 
 const people = window.CASE_FILES;
-const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+const norm = s => s.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
 const keys = p => [p.name, ...p.aliases].map(norm);
 const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const root = document.documentElement;
@@ -178,32 +178,61 @@ function show(p) {
       </div>
       <div class="card-foot">
         <span>${money}</span>
-        <a href="${wikiUrl(p)}" target="_blank" rel="noopener">Read more on Wikipedia →</a>
+        <span class="foot-links">
+          <button type="button" class="share" data-name="${esc(p.name)}">Share</button>
+          <a href="${wikiUrl(p)}" target="_blank" rel="noopener">Wikipedia →</a>
+        </span>
       </div>
     </article>`;
   root.style.setProperty("--glow", `var(--v-${p.verdict})`);
   document.title = `Is ${p.name} cancelled? ${v.stamp} | Are They Cancelled?`;
-  history.replaceState(null, "", "#" + encodeURIComponent(p.name));
+  setUrl("/" + slug(p.name), push);
 }
 
 const wikiUrl = p => p.wiki
   ? "https://en.wikipedia.org/wiki/" + encodeURIComponent(p.wiki)
   : "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(p.name);
 
-function showUnknown(name) {
+// Closest name for typos ("woddy allen" -> Woody Allen). Plain Levenshtein, cheap enough for ~500 names.
+function lev(a, b) {
+  const row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let prev = row[0]; row[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = tmp;
+    }
+  }
+  return row[b.length];
+}
+function closest(name) {
+  const q = norm(name);
+  let best = null, bestD = Infinity;
+  for (const p of people) for (const k of keys(p)) {
+    const d = lev(q, k);
+    if (d < bestD) { bestD = d; best = p; }
+  }
+  return bestD <= Math.max(2, Math.floor(q.length / 4)) ? best : null;
+}
+
+function showUnknown(name, push = true) {
   $s.hidden = true;
   document.title = "Are They Cancelled?";
   root.style.removeProperty("--glow");
+  const guess = closest(name);
   $r.innerHTML = `
     <article class="card">
       <div class="card-head">
         <div><h2>${esc(name)}</h2><p class="known">Not in our case files</p></div>
         <div class="stamp">No file</div>
       </div>
+      ${guess ? `<p class="guess">Did you mean <button type="button" data-name="${esc(guess.name)}">${esc(guess.name)}</button>?</p>` : ""}
       <p>We have no record for this person. That doesn't make them a saint, and it doesn't make them a monster.</p>
       <div class="card-foot"><span>Want to check?</span>
         <a href="https://news.google.com/search?q=${encodeURIComponent('"' + name + '" controversy')}" target="_blank" rel="noopener">Search the news yourself →</a></div>
     </article>`;
+  setUrl("/" + slug(name), push);
 }
 
 function lookup(name) {
@@ -211,12 +240,49 @@ function lookup(name) {
   pick ? show(pick) : showUnknown(name);
 }
 
+// URLs: /woody-allen on a real server (Vercel rewrites it to index.html), #woody-allen when opened as a file.
+const slug = name => norm(name).replace(/ /g, "-");
+const usePaths = location.protocol.startsWith("http");
+let push = true;
+function setUrl(path, doPush) {
+  const url = usePaths ? path : "#" + path.slice(1);
+  if ((usePaths ? location.pathname : location.hash) === (usePaths ? path : url)) return;
+  history[doPush ? "pushState" : "replaceState"](null, "", url);
+  if (usePaths) document.querySelector('link[rel="canonical"]').href = location.origin + path;
+}
+function route() {
+  const raw = decodeURIComponent((location.hash.slice(1) || location.pathname.slice(1)).replace(/\/$/, ""));
+  push = false;
+  if (!raw || raw === "index.html") {
+    $r.innerHTML = ""; $q.value = ""; root.style.removeProperty("--glow"); document.title = "Are They Cancelled? Check if a celebrity is cancelled";
+  } else {
+    const s = slug(raw);
+    const pick = people.find(p => slug(p.name) === s) || matches(raw.replace(/-/g, " "))[0];
+    pick ? show(pick) : showUnknown(raw.replace(/-/g, " "));
+  }
+  push = true;
+}
+addEventListener("popstate", route);
+
+// Share: native share sheet on phones, copy link elsewhere
+$r.addEventListener("click", async e => {
+  const g = e.target.closest(".guess button");
+  if (g) return show(people.find(p => p.name === g.dataset.name));
+  const b = e.target.closest(".share"); if (!b) return;
+  const p = people.find(x => x.name === b.dataset.name);
+  const data = { title: `Is ${p.name} cancelled?`, text: `Is ${p.name} cancelled? ${VERDICTS[p.verdict].stamp}.`, url: location.href };
+  try {
+    if (navigator.share) await navigator.share(data);
+    else { await navigator.clipboard.writeText(location.href); b.textContent = "Link copied ✓"; setTimeout(() => (b.textContent = "Share"), 2000); }
+  } catch {}
+});
+
 $q.addEventListener("input", renderSuggest);
 $q.addEventListener("keydown", e => {
   if ($s.hidden || !current.length) return;
   if (e.key === "ArrowDown") { e.preventDefault(); setActive((active + 1) % current.length); }
   else if (e.key === "ArrowUp") { e.preventDefault(); setActive((active - 1 + current.length) % current.length); }
-  else if (e.key === "Escape") { $s.hidden = true; }
+  else if (e.key === "Escape") { $s.hidden = true; $q.setAttribute("aria-expanded", false); }
 });
 $s.addEventListener("mousedown", e => {
   const li = e.target.closest("li"); if (li) { e.preventDefault(); show(current[+li.dataset.i]); }
@@ -233,7 +299,7 @@ document.querySelector(".try").addEventListener("click", e => {
 
 // "/" focuses search
 document.addEventListener("keydown", e => {
-  if (e.key === "/" && document.activeElement !== $q) { e.preventDefault(); $q.focus(); }
+  if (e.key === "/" && !e.target.closest("input, textarea, [contenteditable]")) { e.preventDefault(); $q.focus(); }
 });
 
 // Spotlight that follows the cursor on the result card
@@ -291,10 +357,8 @@ $grid.addEventListener("click", e => {
 });
 renderBrowse();
 
-// Deep links: index.html#Woody%20Allen
-if (location.hash.length > 1) {
-  const pick = matches(decodeURIComponent(location.hash.slice(1)))[0]; if (pick) show(pick);
-}
+// Deep links: /woody-allen, plus old-style #Woody%20Allen links
+route();
 </script>
 </body>
 </html>
