@@ -246,15 +246,16 @@ const usePaths = location.protocol.startsWith("http");
 let push = true;
 function setUrl(path, doPush) {
   const url = usePaths ? path : "#" + path.slice(1);
-  if ((usePaths ? location.pathname : location.hash) === (usePaths ? path : url)) return;
-  history[doPush ? "pushState" : "replaceState"](null, "", url);
   if (usePaths) document.querySelector('link[rel="canonical"]').href = location.origin + path;
+  if ((usePaths ? location.pathname : location.hash) === url) return;
+  history[doPush ? "pushState" : "replaceState"](null, "", url);
 }
 function route() {
   const raw = decodeURIComponent((location.hash.slice(1) || location.pathname.slice(1)).replace(/\/$/, ""));
   push = false;
   if (!raw || raw === "index.html") {
     $r.innerHTML = ""; $q.value = ""; root.style.removeProperty("--glow"); document.title = "Are They Cancelled? Check if a celebrity is cancelled";
+    if (usePaths) document.querySelector('link[rel="canonical"]').href = location.origin + "/";
   } else {
     const s = slug(raw);
     const pick = people.find(p => slug(p.name) === s) || matches(raw.replace(/-/g, " "))[0];
